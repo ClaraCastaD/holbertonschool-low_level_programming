@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include <stdio.h>
 
 /**
 * main - check the code for Holberton School students.
@@ -11,29 +11,27 @@ int main(void)
 
 	for (c = 1 ; c <= 100 ; c++)
 	{
-		if (c % 3 != 0 && c % 5 != 0)
+		if (c % 3 == 0 && c % 5 == 0)
 		{
-			printf("%d ", c);
+			printf("FizzBuzz");
+		}
+		else if (c % 3 == 0)
+		{
+			printf("Fizz");
+		}
+		else if (c % 5 == 0)
+		{
+			printf("Buzz");
 		}
 		else
 		{
-			if (c % 3 == 0)
-			{
-				printf("Fizz");
-			}
-			else if (c % 5 == 0)
-			{
-				printf("Buzz");
-			}
-			else if (c == 100)
-			{
-				putchar('\n');
-			}
-			else
-			{
-				putchar(' ');
-			}
+			printf("%d", c);
+		}
+		if (c < 100)
+		{
+			printf(" ");
 		}
 	}
+	printf("\n");
 	return (0);
 }
