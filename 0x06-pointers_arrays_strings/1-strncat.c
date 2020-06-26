@@ -1,7 +1,7 @@
 #include "holberton.h"
- 
+
 /**
-* _strcat - The source
+* _strncat - The source
 *@dest: poinetr to the destination array
 *@src: string to be appended
 *@n: maximum of characters to be appended
