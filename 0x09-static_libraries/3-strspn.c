@@ -1,25 +1,30 @@
 #include "holberton.h"
 
 /**
- *_strchr - Function that alocates a character
- *@s: String
- *@c: Returns a pointer to the first occurrence
- *Return: Always 0
+ *_strspn - Function that gets the lenght of a prefix substring
+ *@s: Pointer
+ *@accept: Pointer
+ * Return: Always 0.
  */
-char *_strchr(char *s, char c)
+unsigned int _strspn(char *s, char *accept)
 {
-  int i;
+	unsigned int i = 0;
+	int j, k;
 
-  for (i = 0 ; s[i] != '\0'; i++)
-  {
-    if (s[i] == c)
-    {
-	  return (s + i);
-    }
-  }
-  if (s[i] == c)
-  {
-      return (s + i);
-  }
-  return (0);
+	for (j = 0; s[j] ; j++)
+	{
+		for (k = 0; accept[k] ; k++)
+		{
+			if (s[j] == accept[k])
+			{
+				i++;
+				break;
+			}
+		}
+		if (s[j] != accept[k])
+		{
+			break;
+		}
+	}
+	return (i);
 }
