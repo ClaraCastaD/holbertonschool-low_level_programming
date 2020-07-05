@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 /**
- * main - print its name.
- * @argv: argument vector
- * @argc: argument count.
+ * main - Entry point
+ * @argv: number of arguments
+ * @argc: string with arguments
  * Return: 0.
  */
 
