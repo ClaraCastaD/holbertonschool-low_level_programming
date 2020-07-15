@@ -3,8 +3,8 @@
 
 /**
  * print_name - Prints a name
- *@name: The name we want to rpint
- *@f:ponter to function
+ *@name: The name we want to print
+ *@f:pointer to function
  */
 void print_name(char *name, void (*f)(char *))
 {
