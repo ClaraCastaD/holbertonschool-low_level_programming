@@ -1,77 +1,103 @@
-#include "variadic_functions.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdarg.h>
+#include "variadic_functions.h"
 
 /**
- * print_c - print a char
- * @list: arg from format.
+ * t_char - print a character
+ *@va:character
+ *
+ * Return: no return
  */
-
-void print_c(va_list list)
+void t_char(va_list va)
 {
-	printf("%c", va_arg(list, int));
+	int c;
+
+	c = va_arg(va, int);
+	printf("%c", c);
 }
 
 /**
- * print_i - print a integer
- * @list: arg from format
+ * t_integer - print an integer
+ *@va:number 1
+ *
+ * Return: no return
  */
-
-void print_i(va_list list)
+void t_integer(va_list va)
 {
-	printf("%i", va_arg(list, int));
+	printf("%d", va_arg(va, int));
 }
 
 /**
- * print_f - print a float
- * @list: arg from format
+ * t_float - print a float
+ *@va:float number
+ *
+ * Return: no return
  */
-
-void print_f(va_list list)
+void t_float(va_list va)
 {
-	printf("%f", va_arg(list, double));
+	double c;
+
+	c = va_arg(va, double);
+	printf("%f", c);
+}
+/**
+ * t_string - print a string
+ *@va: pointer to string
+ *
+ * Return: no return
+ */
+void t_string(va_list va)
+{
+	char *s = va_arg(va, char *);
+
+	if (s == NULL)
+	{
+		printf("(nil)");
+		return;
+	}
+	printf("%s", s);
 }
 
-/**
- * print_s - print a string
- * @list: arg from format
- */
-
-void print_s(va_list list)
-{
-	printf("%s", va_arg(list, char*));
-}
 
 /**
- * print_all - function that prints anything
- * @format: is a list of types of arguments
+ * print_all - prints anything
+ *@format: format
+ *
+ * Return: no return
  */
-
 void print_all(const char * const format, ...)
 {
-	va_list args;
-	int i = 0, j = 0;
-
-	holby pri[] = {
-		{"c", print_c},
-		{"i", print_i},
-		{"f", print_f},
-		{"s", print_s},
-		{NULL, NULL}
+	int i, j, count;
+	va_list valist;
+	types difftypes[] = {
+		{'c', t_char},
+		{'i', t_integer},
+		{'f', t_float},
+		{'s', t_string},
 	};
-	va_start(args, format);
+	char *s = "";
+
+	i = 0;
+	count = 0;
+	va_start(valist, format);
 	while (format != NULL && format[i])
 	{
-		while (pri[j].mat != NULL)
+		j = 0;
+		while (j < 4)
 		{
-			if (format[i] == *(pri[j]).mat)
+			if (format[i] == difftypes[j].t)
 			{
-				pri[j].g(args);
-				if (format[i + 1] != '\0')
-					printf(", ");
+				printf("%s", s);
+				difftypes[j].f(valist);
+				s = ", ";
+				count++;
+				break;
 			}
 			j++;
+
 		}
 		i++;
 	}
+	printf("\n");
 }
