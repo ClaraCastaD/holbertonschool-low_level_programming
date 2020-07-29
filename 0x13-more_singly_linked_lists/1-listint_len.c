@@ -2,7 +2,7 @@
 
 /**
  * listint_len - function that returns the number of elements in a linked list
- * @h: elemento of the linked list
+ * @h: element of the linked list
  * Return: number of elements
  */
 
